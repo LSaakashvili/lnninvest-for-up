@@ -4,7 +4,7 @@ const { Client, resources, Webhook } = require("coinbase-commerce-node");
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 
-Client.init("e7795bde-ac10-4919-966b-55f18c5dd68b");
+Client.init("c054fecd-6196-49e6-860d-36583b4da26c");
 
 const { Charge } = resources;
 
@@ -65,9 +65,6 @@ const webHookHandler = functions.https.onRequest(async (req, res) => {
           { referralCode: user.invitedBy },
           { $inc: { balance: (packagesData[package].profit / 100) * 15, referrals: 1 } }
         )
-          .then(user => {
-            window.location.href = "https://lnninvest.com";
-          })
           .catch(err => {
             alert("There's some error occured!");
             window.location.href = "https://lnninvest.com"
