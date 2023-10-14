@@ -1,7 +1,6 @@
 const functions = require("firebase-functions");
 const packagesData = require("../data/PackagesData");
 const { Client, resources, Webhook } = require("coinbase-commerce-node");
-const cors = require("cors");
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 
@@ -23,8 +22,7 @@ const createCharge = functions.https.onRequest(async(req, res) => {
         metadata: {
           package: package,
           token: token,
-        },
-        redirect_url: "https://puzzled-singlet-bee.cyclic.app/request/add/in"
+        }
       };
 
       const charge = await Charge.create(chargeData);
