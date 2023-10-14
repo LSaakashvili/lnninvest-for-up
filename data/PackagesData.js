@@ -7,7 +7,7 @@ const packagesData = {
     },
     silver:{
         name: "SILVER",
-        price: 100,
+        price: 0.01,
         profit: 7,
         days: 14
     },
