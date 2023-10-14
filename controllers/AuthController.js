@@ -73,7 +73,7 @@ const SignUpController = (req, res) => {
             throw err;
           }
           return res.json({
-            status: "success",
+            status: "succes",
             token,
             user,
           });
