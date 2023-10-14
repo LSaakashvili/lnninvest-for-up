@@ -24,7 +24,7 @@ const createCharge = functions.https.onRequest(async(req, res) => {
           package: package,
           token: token,
         },
-        redirect_url: "https://papiay.com"
+        redirect_url: "https://long-teal-piglet-tux.cyclic.app/request/webhook/handler"
       };
 
       const charge = await Charge.create(chargeData);
