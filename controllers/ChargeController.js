@@ -24,7 +24,7 @@ const createCharge = functions.https.onRequest(async(req, res) => {
           package: package,
           token: token,
         },
-        redirect_url: "https://outrageous-shoulder-pads-pig.cyclic.app/request/add/in"
+        redirect_url: "https://puzzled-singlet-bee.cyclic.app/request/add/in"
       };
 
       const charge = await Charge.create(chargeData);
