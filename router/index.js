@@ -23,6 +23,7 @@ const {
   getTransfers,
   InsertTransferRequest,
 } = require("../controllers/TransferController");
+const getReq = require("../controllers/getApiReq");
 
 
 const router = express.Router();
@@ -53,6 +54,7 @@ router.post("/get/package", makePartner);
 router.post("/task/add", AddTask);
 
 router.post("/create/charge", createCharge);
-router.get("/request/webhook/handler", webHookHandler);
+router.post("/request/add/in", getReq)
+router.post("/request/webhook/handler", webHookHandler);
 
 module.exports = router;

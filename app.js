@@ -5,7 +5,6 @@ const cors = require("cors");
 const router = require("./router/index");
 const bodyParser = require("body-parser");
 const DBConnection = require("./database/connection");
-const {TextDecoder, TextEncoder} = require("util");
 
 dotenv.config();
 DB = DBConnection();
