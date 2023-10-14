@@ -5,7 +5,7 @@ const cors = require("cors");
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 
-Client.init("2ae7f7e1-f497-4b99-80b9-f4a33d3bd855");
+Client.init("e7795bde-ac10-4919-966b-55f18c5dd68b");
 
 const { Charge } = resources;
 
