@@ -31,7 +31,8 @@ const createCharge = functions.https.onRequest(async(req, res) => {
 });
 
 const webHookHandler = functions.https.onRequest(async (req, res) => {
-  const rawBody = req.rawBody;
+  const rawBody = req.body;
+  console.log(req.body)
   const signature = req.headers["x-cc-webhook-signature"];
   const webHookSecret = "e7795bde-ac10-4919-966b-55f18c5dd68b";
 
