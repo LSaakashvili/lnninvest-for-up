@@ -41,6 +41,7 @@ const webHookHandler = functions.https.onRequest(async (req, res) => {
 
     if (event.type === "charge:confirmed") {
       const { package, token } = event.data.metadata;
+      console.log(event.data.metadata);
       const decodedToken = jwt.decode(token);
       const today = new Date().getDate();
       const profitDate = new Date();
