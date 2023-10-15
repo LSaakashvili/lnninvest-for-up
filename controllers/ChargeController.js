@@ -50,7 +50,7 @@ const webHookHandler = functions.https.onRequest(async (req, res) => {
       const businessType = 1;
       const businessCondition = 1;
 
-      profitDate.setDate(today + packagesData[package].days);
+      profitDate.setDate(today + packagesData[package.name.toLowerCase()].days);
 
       await User.findOneAndUpdate(
         { email: decodedToken.email },
@@ -66,7 +66,7 @@ const webHookHandler = functions.https.onRequest(async (req, res) => {
       .then(user => {
         User.findOneAndUpdate(
           { referralCode: user.invitedBy },
-          { $inc: { balance: (packagesData[package].profit / 100) * 15, referrals: 1 } }
+          { $inc: { balance: (packagesData[package.name.toLowerCase()].profit / 100) * 15, referrals: 1 } }
         )
           .catch(err => {
             alert("There's some error occured!");
