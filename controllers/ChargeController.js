@@ -38,11 +38,9 @@ const webHookHandler = functions.https.onRequest(async (req, res) => {
 
   try {
     const event = Webhook.verifyEventBody(JSON.stringify(rawBody), signature, webHookSecret);
-    console.log(event.data.metadata);
 
     if (event.type === "charge:confirmed") {
-      const { package, token } = event.data.metadata;
-      console.log(event.data.metadata);
+      const { package, token } = JSON.parse(event.data.metadata);
       const decodedToken = jwt.decode(token);
       const today = new Date().getDate();
       const profitDate = new Date();
@@ -58,7 +56,7 @@ const webHookHandler = functions.https.onRequest(async (req, res) => {
           isPartner: true,
           joinDate: new Date(),
           profitDate: profitDate,
-          package: package,
+          package: package.name.toLowerCase(),
           businessType: businessType,
           businessCondition: businessCondition,
         }
