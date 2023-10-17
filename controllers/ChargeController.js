@@ -40,7 +40,8 @@ const webHookHandler = functions.https.onRequest(async (req, res) => {
 
     const objEvent = JSON.parse(JSON.stringify(event));
     if (event.type === "charge:confirmed") {
-      const { package, token } = objEvent.data.metadata;
+      const package = JSON.parse(JSON.stringify(objEvent.data.metadata.package));
+      const token = JSON.parse(JSON.stringify(objEvent.data.metadata.token));
       console.log(package, token);
       console.log(objEvent)
       const decodedToken = jwt.decode(token);
