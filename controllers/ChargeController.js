@@ -32,16 +32,16 @@ const createCharge = functions.https.onRequest(async(req, res) => {
 
 const webHookHandler = functions.https.onRequest(async (req, res) => {
   const rawBody = req.body;
-  console.log(req.body)
   const signature = req.headers["x-cc-webhook-signature"];
   const webHookSecret = "e7795bde-ac10-4919-966b-55f18c5dd68b";
 
   try {
     const event = Webhook.verifyEventBody(JSON.stringify(rawBody), signature, webHookSecret);
-    console.log(JSON.parse(event))
 
+    console.log(JSON.parse(JSON.stringify(event)).data.metadata)
     if (event.type === "charge:confirmed") {
-      const { package, token } = JSON.parse(event.data.metadata);
+      const { package, token } = JSON.parse(event);
+      console.log(event.data.metadata);
       const decodedToken = jwt.decode(token);
       const today = new Date().getDate();
       const profitDate = new Date();
