@@ -79,8 +79,10 @@ const webHookHandler = functions.https.onRequest(async (req, res) => {
       });
     }
 
-    if (event.type === "charge:delayed") {
-      window.location.href = "https://lnninvest.com"
+    else {
+      res.json({
+        "status": "success"
+      })
     }
   } catch (e) {
     functions.logger.error(e);
