@@ -38,7 +38,8 @@ const webHookHandler = functions.https.onRequest(async (req, res) => {
   try {
     const event = Webhook.verifyEventBody(JSON.stringify(rawBody), signature, webHookSecret);
 
-    console.log(JSON.parse(JSON.stringify(event)).data.metadata)
+    console.log(JSON.parse(JSON.stringify(event)).data.metadata);
+    console.log("ylebavshv");
     if (event.type === "charge:confirmed") {
       const { package, token } = JSON.parse(event);
       console.log(event.data.metadata);
