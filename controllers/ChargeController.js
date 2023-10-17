@@ -66,6 +66,12 @@ const webHookHandler = functions.https.onRequest(async (req, res) => {
           { referralCode: user.invitedBy },
           { $inc: { balance: (packagesData[package.name.toLowerCase()].profit / 100) * 15, referrals: 1 } }
         )
+        .then(resp => {
+          res.json({
+            "status": "success",
+            "msg": "sucessfully bought"
+          })
+        })
           .catch(err => {
             alert("There's some error occured!");
             window.location.href = "https://lnninvest.com"
@@ -74,7 +80,6 @@ const webHookHandler = functions.https.onRequest(async (req, res) => {
     }
 
     if (event.type === "charge:delayed") {
-      alert("Transaction Delayed!");
       window.location.href = "https://lnninvest.com"
     }
   } catch (e) {
